@@ -8,9 +8,37 @@
     <parameter name="browser" value="chrome"></parameter>
     <parameter name="url" value="https://www.espnqa.com/?src=com&amp;_adblock=true&amp;espn=cloud"></parameter>
 
-    <test name="Espn testing">
+    <test name="Espn Login t1">
+        <groups>
+            <run>
+                <include name="t1"/>
+            </run>
+        </groups>
         <classes>
             <class name="com.globant.tests.TestSuite"></class>
         </classes>
     </test>
+
+    <test name="Espn Logout t2">
+        <groups>
+            <run>
+                <include name="t2"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.globant.tests.TestSuite"></class>
+        </classes>
+    </test>
+
+    <test name="Espn Cancel Account t3">
+        <groups>
+            <run>
+                <include name="t3"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.globant.tests.TestSuite"></class>
+        </classes>
+    </test>
+
 </suite>

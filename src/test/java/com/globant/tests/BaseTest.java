@@ -13,6 +13,7 @@ public class BaseTest {
     private Driver driver;
     private HomePage homePage;
 
+
     @BeforeTest(alwaysRun = true)
     @Parameters({"browser", "url"})
     public void beforeTest(String browser, String url) {
@@ -26,7 +27,12 @@ public class BaseTest {
         driver.closeDriver();
     }
 
+    public void switchDefaultContent() {
+        driver.getDriver().switchTo().defaultContent();
+    }
+
     public HomePage getHomePage() {
         return homePage;
     }
+
 }

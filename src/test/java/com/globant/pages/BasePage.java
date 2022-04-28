@@ -25,6 +25,7 @@ public class BasePage {
 
     public void clickElement(WebElement webElement) {
         this.waitElementVisibility(webElement);
+        this.waitElementClickable(webElement);
         webElement.click();
     }
 
@@ -33,7 +34,12 @@ public class BasePage {
     }
 
     public void sendKeys(WebElement webElement, String keys) {
+        this.waitElementVisibility(webElement);
         webElement.sendKeys(keys);
+    }
+
+    public void reload(String url) {
+        this.driver.get(url);
     }
 
     public WebDriver getDriver() {
@@ -42,6 +48,16 @@ public class BasePage {
 
     public WebDriverWait getWait() {
         return wait;
+    }
+
+    public void dispose() {
+        if (driver != null) {
+            driver.quit();
+        }
+    }
+
+    public void switchDefaultContent() {
+        getDriver().switchTo().defaultContent();
     }
 
 }
