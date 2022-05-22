@@ -7,16 +7,20 @@ import org.openqa.selenium.support.FindBy;
 
 public class SignUpPage extends BasePage {
 
-    @FindBy(css = "input[name = 'firstName']")
+    @FindBy(id = "InputFirstName")
     private WebElement firstNameInput;
-    @FindBy(css = "input[name = 'lastName']")
+    @FindBy(id = "InputLastName")
     private WebElement lastNameInput;
-    @FindBy(css = "input[name = 'email']")
+    @FindBy(id = "InputEmail")
     private WebElement emailInput;
-    @FindBy(css = "input[name = 'newPassword']")
+    @FindBy(id = "password-new")
     private WebElement passwordInput;
-    @FindBy(css = "button[did-translate = 'create.SIGN_UP']")
+    @FindBy(id = "BtnSubmit")
     private WebElement SignUpButton;
+    @FindBy(css = "h2[data-testid='Title']")
+    private WebElement signUpTitle;
+    @FindBy(css = "button[data-testid='REGISTRATION-close']")
+    private WebElement closeXButton;
 
     public SignUpPage(WebDriver driver) {
         super(driver);
@@ -29,27 +33,39 @@ public class SignUpPage extends BasePage {
         sendKeys(passwordInput, profileInfo.getPassword());
     }
 
-    public void clickSignUpButton() {
+    public HomePage goToHomepageSignedUp() {
         clickElement(SignUpButton);
+        switchDefaultContent();
+        return new HomePage(getDriver());
     }
 
-    public WebElement getFirstNameInput() {
-        return firstNameInput;
+    public boolean isSignUpTitleDisplayed() {
+        return signUpTitle.isDisplayed();
     }
 
-    public WebElement getLastNameInput() {
-        return lastNameInput;
+    public boolean isFirstNameInputDisplayed() {
+        return firstNameInput.isDisplayed();
     }
 
-    public WebElement getEmailInput() {
-        return emailInput;
+    public boolean isLastNameInputDisplayed() {
+        return lastNameInput.isDisplayed();
     }
 
-    public WebElement getPasswordInput() {
-        return passwordInput;
+    public boolean isEmailInputDisplayed() {
+        return emailInput.isDisplayed();
     }
 
-    public WebElement getSignUpButton() {
-        return SignUpButton;
+    public boolean isPasswordInputDisplayed() {
+        return passwordInput.isDisplayed();
     }
+
+    public boolean isSignUpButtonDisplayed() {
+        return SignUpButton.isDisplayed();
+    }
+
+    public boolean isCloseXButtonDisplayed() {
+        return closeXButton.isDisplayed();
+    }
+
+
 }

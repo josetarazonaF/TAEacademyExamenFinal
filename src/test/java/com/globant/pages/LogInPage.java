@@ -5,28 +5,30 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class LoginIframe extends BasePage {
+public class LogInPage extends BasePage {
 
 
     @FindBy(css = "input[placeholder ='Username or Email Address']")
     private WebElement emailInput;
     @FindBy(css = "input[placeholder= 'Password (case sensitive)']")
     private WebElement passwordInput;
-    @FindBy(css = "button[did-translate= 'login.label.SIGNIN']")
-    private WebElement loginButton;
-    @FindBy(css = "a[did-translate= 'login.label.CREATE_ACCOUNT']")
+    @FindBy(id = "BtnSubmit")
+    private WebElement logInButton;
+    @FindBy(id = "BtnCreateAccount")
     private WebElement signUpButton;
+    @FindBy(css = "div[data-testid= 'login-logo']")
+    private WebElement logoESPN;
 
 
-    public LoginIframe(WebDriver driver) {
+    public LogInPage(WebDriver driver) {
         super(driver);
     }
 
     public void clickLoginButton() {
-        clickElement(loginButton);
+        clickElement(logInButton);
     }
 
-    public SignUpPage clickSignUpButton() {
+    public SignUpPage goToSignUpPage() {
         clickElement(this.signUpButton);
         return new SignUpPage(getDriver());
     }
@@ -40,21 +42,19 @@ public class LoginIframe extends BasePage {
         getDriver().switchTo().defaultContent();
     }
 
-    public WebElement getEmailInput() {
-        return emailInput;
+
+    public boolean isESPNLogoDisplayed() {
+        return logoESPN.isDisplayed();
     }
 
-    public WebElement getPasswordInput() {
-        return passwordInput;
+
+    public boolean isLoginButtonDisplayed() {
+        return logInButton.isDisplayed();
     }
 
-    public WebElement getLoginButton() {
-        return loginButton;
-    }
 
-    public WebElement getSignUpButton() {
-        return signUpButton;
+    public boolean isSignUpButtonDisplayed() {
+        return signUpButton.isDisplayed();
     }
-
 
 }
